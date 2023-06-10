@@ -9,8 +9,6 @@ export default class productRepo {
   }
 
   public async getProductsFromDb(filters?: any): Promise<IProduct[]> {
-    console.log("=========== in get products from db===========");
-    console.log(filters);
     const result = await this.database.getProducts(filters);
     return result;
   }
@@ -20,9 +18,9 @@ export default class productRepo {
   }
 
   public async setMinimumPrice(minimumPrice: string): Promise<void> {
-    const result = await this.database.storeItem("min_price", minimumPrice);
+    await this.database.storeItem("min_price", minimumPrice);
   }
   public async setMaximumPrice(maximumPrice: string): Promise<void> {
-    const result = await this.database.storeItem("max_price", maximumPrice);
+    await this.database.storeItem("max_price", maximumPrice);
   }
 }

@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
-import ProductRepo from "../../../repository/productRepo";
-import { ICategorie, IProduct } from "../../../domain/models";
-import Categorie from "../../presentation/Categorie";
+import { ICategorie } from "../../../domain/models";
 import CategorieRepo from "../../../repository/categorieRepo";
 import { filterTypes } from "../FilterType";
 

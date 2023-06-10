@@ -1,4 +1,3 @@
-import React from "react";
 import { Region } from "../../../domain/models";
 
 export default function index({
@@ -11,7 +10,7 @@ export default function index({
   return (
     <div
       className="flex flex-col items-center"
-      onClick={(e) => storeChosenFilterValue(region.name)}
+      onClick={() => storeChosenFilterValue(region.name)}
     >
       <img
         src={`${region.picture_url}`}

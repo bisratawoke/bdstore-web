@@ -3,11 +3,7 @@ import { ICategorie } from "../../../domain/models";
 import CategorieRepo from "../../../repository/categorieRepo";
 import Categorie from "../../presentation/Categorie";
 import { useSelector, useDispatch } from "react-redux";
-import {
-  setCurrentFilter,
-  setCurrentLocationFilter,
-  setCurrentProductCategory,
-} from "./filterSlice";
+import { setCurrentProductCategory } from "./filterSlice";
 
 export default function index() {
   const [categories, setCategories] = useState<ICategorie[]>();

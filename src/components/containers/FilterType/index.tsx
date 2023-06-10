@@ -34,6 +34,7 @@ export default function index() {
     productRepo.setMaximumPrice(e.target.value);
   };
   useEffect(() => {
+ console.log(filterTypes);
     locationRepo.getRegions().then((regions) => setRegions(regions));
   }, []);
 

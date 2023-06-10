@@ -3,7 +3,11 @@ import Search from "../../presentation/Search";
 import SearchFilter from "../../presentation/SearchFilter";
 import { useCallback, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { setCurrentFilter } from "../Filters/filterSlice";
+import {
+  setCurrentFilter,
+  setCurrentLocationFilter,
+  setCurrentProductCategory,
+} from "../Filters/filterSlice";
 import LocalStorage from "../../../database/localStorage";
 export default function index() {
   const [showFilterModal, setShowFilterModal] = useState<boolean>(false);
@@ -29,20 +33,19 @@ export default function index() {
   };
 
   const removeFilter = (filter: string) => {
-    const filters = {
-      location:
-        filter == "location" ? "Anywhere" : localStorage.getItem("location"),
-      category:
-        filter == "category" ? "Everything" : localStorage.getItem("category"),
-      min_price: localStorage.getItem("min_price"),
-      max_price: localStorage.getItem("max_price"),
-    };
-    dispatch(setCurrentFilter(filters));
+    if (filter == "location") {
+      dispatch(setCurrentLocationFilter("Anywhere"));
+    } else {
+      dispatch(setCurrentProductCategory("Everything"));
+    }
   };
   return (
     <div>
       {showFilterModal == true ? (
-        <SearchFilter applyFilteration={applyFilteration} />
+        <SearchFilter
+          applyFilteration={applyFilteration}
+          hideModal={hideModal}
+        />
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-12  bg-white px-10">
           <Logo />

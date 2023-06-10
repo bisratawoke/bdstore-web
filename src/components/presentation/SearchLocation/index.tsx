@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Region } from "../../../domain/models";
 import RegionPresentor from "../Region";
 export default function index({

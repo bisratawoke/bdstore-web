@@ -8,7 +8,6 @@ import { MdOutlineFastfood } from "react-icons/md";
 import { TbShoe } from "react-icons/tb";
 import { RiEyeCloseLine } from "react-icons/ri";
 import { MdOutlineWbSunny } from "react-icons/md";
-import AmharaPictureUrl from "../assets/Amhara_Region.svg";
 
 export default class localStorage {
   private products = [
@@ -107,7 +106,7 @@ export default class localStorage {
   ];
   constructor() {}
 
-  public async setMaximumPrice(amount: number): Promise<void> {}
+  // public async setMaximumPrice(): Promise<void> {}
   public async storeItem(key: string, value: string) {
     return new Promise<boolean>((resolve, reject) => {
       try {
