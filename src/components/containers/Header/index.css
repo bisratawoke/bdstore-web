@@ -1,0 +1,36 @@
+.headerCont {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  border-bottom: 1px solid lightgray;
+  align-items: center;
+  padding-bottom: 20px;
+  padding-top: 10px;
+}
+
+.logoContainer {
+  grid-column-start: 2;
+  grid-column-end: 3;
+}
+
+.searchContainer {
+  grid-column-start: 5;
+  grid-column-end: 8;
+}
+
+@media (max-width: 576px) {
+  .hide-on-small {
+    display: none;
+  }
+
+  .headerCont {
+    display: grid;
+    grid-template-columns: 1fr;
+    background-color: aqua;
+  }
+  .searchContainer {
+    display: flex;
+    border-color: red;
+    grid-column: 1;
+    background-color: black;
+  }
+}
