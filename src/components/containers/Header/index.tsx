@@ -1,6 +1,6 @@
 import Search from "../../presentation/Search";
 import SearchFilter from "../../presentation/SearchFilter";
-import { useCallback, useState } from "react";
+import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
   setCurrentFilter,

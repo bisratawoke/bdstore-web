@@ -1,5 +1,4 @@
 import { AiOutlineSearch } from "react-icons/ai";
-import { IoArrowBackCircleOutline } from "react-icons/io5";
 import { Outlet } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setCurrentFilter } from "../Filters/filterSlice";
