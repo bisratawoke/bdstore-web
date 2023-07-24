@@ -4,18 +4,16 @@ import type productRepo from "../../../repository/productRepo";
 import ProductRepo from "../../../repository/productRepo";
 import { IProduct } from "../../../domain/models";
 import Product from "../../presentation/Product";
+import logo from "../../../assets/logo.png";
 export default function index() {
   const productRepo: productRepo = new ProductRepo();
   const [products, setProducts] = useState<Array<IProduct>>();
   const filters = useSelector((state: any) => state.filter);
   useEffect(() => {
-    console.log("============ in products ================");
-    console.log(filters.current);
     productRepo
-      .getProductsFromDb(filters.current)
+      .getProducts(filters.current)
       .then((products: Array<IProduct>) => {
-        console.log("============ in products ================");
-        console.log(products);
+        console.log("here");
         setProducts(products);
       })
       .catch((err) => {
@@ -24,6 +22,14 @@ export default function index() {
   }, [filters.current]);
   return (
     <div className="grid grid-cols-1 lg:grid-cols-4 ">
+      {products && products?.length < 1 ? (
+        <div className="h-screen w-screen flex items-center  flex-col ">
+          <img src={logo} />
+          <span>Not items found</span>
+        </div>
+      ) : (
+        <></>
+      )}
       {products?.map((product: IProduct) => {
         return <Product {...product} />;
       })}

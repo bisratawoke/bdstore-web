@@ -3,17 +3,68 @@ import { AiOutlineCar } from "react-icons/ai";
 import { HiOutlineComputerDesktop } from "react-icons/hi2";
 import { BsHouse, BsPencil } from "react-icons/bs";
 import { IoShirtOutline } from "react-icons/io5";
-import { BiBook } from "react-icons/bi";
+import { BiBook, BiNetworkChart } from "react-icons/bi";
 import { MdOutlineFastfood } from "react-icons/md";
 import { TbShoe } from "react-icons/tb";
 import { RiEyeCloseLine } from "react-icons/ri";
 import { MdOutlineWbSunny } from "react-icons/md";
-
+import { GiJewelCrown } from "react-icons/gi";
 export default class localStorage {
+  private categories = [
+    {
+      title: "New",
+      icon: <MdOutlineWbSunny className="text-2xl text-gray-600" />,
+    },
+    {
+      title: "Tech",
+      icon: <HiOutlineComputerDesktop className="text-2xl text-gray-600" />,
+    },
+    {
+      title: "CAR",
+      icon: <AiOutlineCar className="text-2xl text-gray-600" />,
+    },
+    {
+      title: "Shoes",
+      icon: <TbShoe className="text-2xl text-gray-600" />,
+    },
+    {
+      title: "Clothing",
+      icon: <IoShirtOutline className="text-2xl text-gray-600" />,
+    },
+    {
+      title: "Cosmotics",
+      icon: <RiEyeCloseLine className="text-2xl text-gray-600" />,
+    },
+    {
+      title: "House",
+      icon: <BsHouse className="text-2xl text-gray-600" />,
+    },
+    {
+      title: "Books",
+      icon: <BiBook className="text-2xl text-gray-600" />,
+    },
+    {
+      title: "Food",
+      icon: <MdOutlineFastfood className="text-2xl text-gray-600" />,
+    },
+    {
+      title: "Stationary",
+      icon: <BsPencil className="text-2xl text-gray-600" />,
+    },
+    {
+      title: "Jobs",
+      icon: <BiNetworkChart className="text-2xl text-gray-600" />,
+    },
+    {
+      title: "Jewelery",
+      icon: <GiJewelCrown className="text-2xl text-gray-600" />,
+    },
+  ];
   private products = [
     {
       id: "1",
       location: "Amhara",
+      region_name: "Amhara",
       price: 1000,
       description: "New Car",
       catalog_type: "CAR",
@@ -24,6 +75,7 @@ export default class localStorage {
     {
       id: "1",
       location: "Addis Ababa",
+      region_name: "Addis Ababa",
       price: 1000,
       description: "New Car",
       catalog_type: "CAR",
@@ -33,6 +85,7 @@ export default class localStorage {
     {
       id: "1",
       location: "Addis Ababa",
+      region_name: "Addis Ababa",
       price: 3000,
       description: "New Car",
       catalog_type: "CAR",
@@ -42,6 +95,7 @@ export default class localStorage {
     {
       id: "1",
       location: "SNNP",
+      region_name: "SNNP",
       price: 1000,
       description: "New Car",
       catalog_type: "CAR",
@@ -51,6 +105,7 @@ export default class localStorage {
     {
       id: "1",
       location: "SNNP",
+      region_name: "SNNP",
       price: 1000,
       description: "New Car",
       catalog_type: "CAR",
@@ -60,6 +115,7 @@ export default class localStorage {
     {
       id: "1",
       location: "Amhara",
+      region_name: "Amhara",
       price: 1000,
       description: "New Car",
       catalog_type: "CAR",
@@ -70,6 +126,7 @@ export default class localStorage {
     {
       id: "1",
       location: "Addis Ababa",
+      region_name: "Addis Ababa",
       price: 1000,
       description: "New Car",
       catalog_type: "CAR",
@@ -79,6 +136,7 @@ export default class localStorage {
     {
       id: "1",
       location: "Addis Ababa",
+      region_name: "Addis Ababa",
       price: 3000,
       description: "New Car",
       catalog_type: "CAR",
@@ -88,6 +146,7 @@ export default class localStorage {
     {
       id: "1",
       location: "SNNP",
+      region_name: "SNNP",
       price: 1000,
       description: "New Car",
       catalog_type: "CAR",
@@ -97,6 +156,7 @@ export default class localStorage {
     {
       id: "1",
       location: "SNNP",
+      region_name: "SNNP",
       price: 1000,
       description: "New Car",
       catalog_type: "CAR",
@@ -106,7 +166,6 @@ export default class localStorage {
   ];
   constructor() {}
 
-  // public async setMaximumPrice(): Promise<void> {}
   public async storeItem(key: string, value: string) {
     return new Promise<boolean>((resolve, reject) => {
       try {
@@ -129,95 +188,13 @@ export default class localStorage {
       max_price: window.localStorage.getItem("max_price"),
     };
   }
+
   public async getCategories(filter?: string): Promise<Array<ICategorie>> {
     if (filter && filter.length > 0) {
-      return [
-        {
-          title: "New",
-          icon: <MdOutlineWbSunny className="text-2xl text-gray-600" />,
-        },
-        {
-          title: "Tech",
-          icon: <HiOutlineComputerDesktop className="text-2xl text-gray-600" />,
-        },
-        {
-          title: "CAR",
-          icon: <AiOutlineCar className="text-2xl text-gray-600" />,
-        },
-        {
-          title: "Shoes",
-          icon: <TbShoe className="text-2xl text-gray-600" />,
-        },
-        {
-          title: "Clothing",
-          icon: <IoShirtOutline className="text-2xl text-gray-600" />,
-        },
-        {
-          title: "Cosmetics",
-          icon: <RiEyeCloseLine className="text-2xl text-gray-600" />,
-        },
-        {
-          title: "House",
-          icon: <BsHouse className="text-2xl text-gray-600" />,
-        },
-        {
-          title: "Books",
-          icon: <BiBook className="text-2xl text-gray-600" />,
-        },
-        {
-          title: "Food",
-          icon: <MdOutlineFastfood className="text-2xl text-gray-600" />,
-        },
-        {
-          title: "Stationary",
-          icon: <BsPencil className="text-2xl text-gray-600" />,
-        },
-      ].filter((categorie: ICategorie) =>
+      return this.categories.filter((categorie: ICategorie) =>
         categorie.title.toLowerCase().startsWith(filter.toLowerCase())
       );
-    } else
-      return [
-        {
-          title: "New",
-          icon: <MdOutlineWbSunny className="text-2xl text-gray-600" />,
-        },
-        {
-          title: "Tech",
-          icon: <HiOutlineComputerDesktop className="text-2xl text-gray-600" />,
-        },
-        {
-          title: "CAR",
-          icon: <AiOutlineCar className="text-2xl text-gray-600" />,
-        },
-        {
-          title: "Shoes",
-          icon: <TbShoe className="text-2xl text-gray-600" />,
-        },
-        {
-          title: "Clothing",
-          icon: <IoShirtOutline className="text-2xl text-gray-600" />,
-        },
-        {
-          title: "Cosmetics",
-          icon: <RiEyeCloseLine className="text-2xl text-gray-600" />,
-        },
-        {
-          title: "House",
-          icon: <BsHouse className="text-2xl text-gray-600" />,
-        },
-        {
-          title: "Books",
-          icon: <BiBook className="text-2xl text-gray-600" />,
-        },
-        {
-          title: "Food",
-          icon: <MdOutlineFastfood className="text-2xl text-gray-600" />,
-        },
-        {
-          title: "Stationary",
-          icon: <BsPencil className="text-2xl text-gray-600" />,
-        },
-      ];
+    } else return this.categories;
   }
 
   public async getProducts(filter?: any): Promise<IProduct[]> {
@@ -235,9 +212,10 @@ export default class localStorage {
     productName: string
   ): Promise<IProduct[]> {
     if (productName && productName.length > 0 && productName !== "Everything") {
-      return this.products.filter((product: IProduct) =>
+      let products = this.products.filter((product: IProduct) =>
         product.catalog_type.toLowerCase().startsWith(productName.toLowerCase())
       );
+      return products;
     } else return this.products;
   }
   private async filterProductsByRegion(
@@ -311,5 +289,16 @@ export default class localStorage {
         picture_url: "/src/assets/flag_of_oromia_region.gif",
       },
     ];
+  }
+
+  public getUserToken(): string | null {
+    try {
+      const token = window.localStorage.getItem("token");
+      if (token && token.length > 1) {
+        return token;
+      } else return null;
+    } catch (error) {
+      throw error;
+    }
   }
 }

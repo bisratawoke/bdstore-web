@@ -16,6 +16,8 @@ export default function index() {
   const locationRepo = new LocationRepo();
   const productRepo = new ProductRepo();
   const [regions, setRegions] = useState<any>();
+  const [maxPrice, setMaxPrice] = useState<any>();
+  const [minPrice, setMinPrice] = useState<any>();
   const storeChosenFilterValue = (value: string) => {
     localStorage.setItem("location", value);
     setFilterType(filterTypes.PRODUCT_TYPE);
@@ -29,12 +31,15 @@ export default function index() {
 
   const setMinimumPrice = (e: React.ChangeEvent<HTMLInputElement>) => {
     productRepo.setMinimumPrice(e.target.value);
+    setMinPrice(e.target.value);
   };
   const setMaximumPrice = (e: React.ChangeEvent<HTMLInputElement>) => {
     productRepo.setMaximumPrice(e.target.value);
+    setMaxPrice(e.target.value);
   };
   useEffect(() => {
- console.log(filterTypes);
+    console.log(filterTypes);
+
     locationRepo.getRegions().then((regions) => setRegions(regions));
   }, []);
 
@@ -44,6 +49,8 @@ export default function index() {
         <PriceFilter
           setMinimumPrice={setMinimumPrice}
           setMaximumPrice={setMaximumPrice}
+          maxPrice={maxPrice}
+          minPrice={minPrice}
         />
       );
       break;

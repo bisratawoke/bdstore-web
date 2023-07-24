@@ -22,26 +22,29 @@ export default function index() {
   }, []);
 
   return (
-    <div className="flex gap-10 lg:grid lg:grid-cols-12 lg:ml-20 scrollbar-hide overflow-x-scroll p-6  bg-white border-b-2 border-gray-200 ">
-      {categories?.map((categorie: ICategorie) => {
-        const props = {
-          ...categorie,
-          isChosen:
-            filters.current.category.toLowerCase() ==
-            categorie.title.toLowerCase(),
-        };
+    <>
+      <div className="flex gap-10 lg:col-start-1 lg:col-end-13 lg:grid lg:grid-cols-12  scrollbar-hide overflow-x-scroll p-6  bg-white border-b-2 border-gray-100 ">
+        {categories?.map((categorie: ICategorie) => {
+          const props = {
+            ...categorie,
+            isChosen:
+              filters.current.category.toLowerCase() ==
+              categorie.title.toLowerCase(),
+          };
 
-        return (
-          <div
-            key={categorie.title}
-            onClick={() => {
-              dispatch(setCurrentProductCategory(categorie.title));
-            }}
-          >
-            <Categorie key={Math.random()} {...props} />
-          </div>
-        );
-      })}
-    </div>
+          return (
+            <div
+              key={categorie.title}
+              className="hover:cursor-pointer"
+              onClick={() => {
+                dispatch(setCurrentProductCategory(categorie.title));
+              }}
+            >
+              <Categorie key={Math.random()} {...props} />
+            </div>
+          );
+        })}
+      </div>
+    </>
   );
 }

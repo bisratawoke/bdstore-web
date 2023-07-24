@@ -4,17 +4,24 @@ export default function index({
   showModal,
   region,
   productType,
+  minPrice,
+  maxPrice,
   removeFilter,
 }: {
   showModal: () => void;
   region: string;
   productType: string;
+  minPrice: string | null;
+  maxPrice: string | null;
   removeFilter: (filter: string) => void;
 }) {
   return (
     <>
-      <div className="rounded-3xl border-2 border-gray-200 shadow-md flex items-center gap-3 p-2 lg:col-start-6 lg:col-end-9 lg:my-5   ">
-        <AiOutlineSearch className="text-lg" onClick={() => showModal()} />
+      <div className="rounded-3xl border-2 border-gray-200 shadow-md flex items-center  gap-3 px-3 lg:p-1 lg:col-start-5 lg:col-end-8 my-5   ">
+        <AiOutlineSearch
+          className="text-lg hover:cursor-pointer"
+          onClick={() => showModal()}
+        />
         <div className="flex gap-2 ">
           <Filter
             name={region}

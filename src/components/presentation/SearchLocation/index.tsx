@@ -24,6 +24,7 @@ export default function index({
       <div className="grid grid-cols-2 gap-10 scrollbar-hide overflow-x-scroll">
         {regions?.map((region: Region) => (
           <RegionPresentor
+            key={region.name}
             region={region}
             storeChosenFilterValue={storeChosenFilterValue}
           />

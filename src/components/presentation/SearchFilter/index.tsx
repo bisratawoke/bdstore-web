@@ -1,7 +1,7 @@
 import { IoArrowBackCircleOutline } from "react-icons/io5";
 import { AiOutlineSearch } from "react-icons/ai";
 import FilterType from "../../containers/FilterType";
-
+import { useNavigate } from "react-router-dom";
 export default function index({
   applyFilteration,
   hideModal,
@@ -9,11 +9,13 @@ export default function index({
   applyFilteration: () => void;
   hideModal: () => void;
 }) {
+  const navigate = useNavigate();
   return (
     <div className="h-screen h-screen bg-white p-2 bg-gray-300 flex flex-col gap-1 scrollbar-hide overflow-y-scroll ">
       <div className="grid grid-cols-1 py-7 px-5">
         <IoArrowBackCircleOutline
           className="text-3xl text-gray-500"
+          // onClick={() => }
           onClick={() => hideModal()}
         />
       </div>

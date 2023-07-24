@@ -11,6 +11,7 @@ export interface IProduct {
   catalog_type: string;
   status: string;
   picture_url: string;
+  region_name: string;
 }
 
 export interface Region {
