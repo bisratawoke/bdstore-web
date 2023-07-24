@@ -25,8 +25,8 @@ export default function index() {
       const user = {
         email: emailFormControl,
         password: passwordFormControl,
-        firstName: firstNameFormControl,
-        lastName: lastNameFormControl,
+        first_name: firstNameFormControl,
+        last_name: lastNameFormControl,
       };
       await userRepo.register(user);
       messageApi.open({
