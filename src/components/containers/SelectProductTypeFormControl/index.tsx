@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 import CategorieRepo from "../../../repository/categorieRepo";
 import { ICategorie } from "../../../domain/models";

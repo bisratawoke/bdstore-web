@@ -1,4 +1,3 @@
-import Logo from "../../presentation/Logo";
 import Search from "../../presentation/Search";
 import SearchFilter from "../../presentation/SearchFilter";
 import { useCallback, useState } from "react";
@@ -18,9 +17,9 @@ export default function index() {
   const localStorage = new LocalStorage();
   const filters = useSelector((state: any) => state.filter);
   const dispatch = useDispatch();
-  const showModal = useCallback(async () => {
-    setShowFilterModal(true);
-  }, []);
+  // const showModal = useCallback(async () => {
+  //   setShowFilterModal(true);
+  // }, []);
 
   const hideModal = () => {
     setShowFilterModal(false);
@@ -57,8 +56,7 @@ export default function index() {
               <div className="">
                 <img src={logo} className="h-fill" alt="logo" />
               </div>
-              <span className="text-xl text-rose-500 font-bold flex-1 font-sans">
-              </span>
+              <span className="text-xl text-rose-500 font-bold flex-1 font-sans"></span>
             </div>
             {/* <Search
               showModal={showModal}

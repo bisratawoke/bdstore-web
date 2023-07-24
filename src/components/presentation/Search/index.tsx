@@ -4,8 +4,6 @@ export default function index({
   showModal,
   region,
   productType,
-  minPrice,
-  maxPrice,
   removeFilter,
 }: {
   showModal: () => void;

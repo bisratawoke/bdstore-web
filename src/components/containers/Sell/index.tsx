@@ -6,8 +6,6 @@ import SellersLocationFormControl from "../SellersLocationFormControl";
 import ProductRepo from "../../../repository/productRepo";
 import ProductImageUploadFormControl from "../ProductImageUploadFromControl";
 import UserRepo from "../../../repository/userRepo";
-import logo from "../../../assets/logo.png";
-import sell from "../../../assets/sell.jpg";
 import Logo from "../../presentation/Logo";
 export default function index() {
   const [messageApi, messageContext] = message.useMessage();

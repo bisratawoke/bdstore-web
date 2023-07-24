@@ -1,7 +1,4 @@
-import React from "react";
-import { AiFillHome } from "react-icons/ai";
 import { AiFillShop } from "react-icons/ai";
-import { AiOutlineLogout } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 export default function index() {
   const navigate = useNavigate();
