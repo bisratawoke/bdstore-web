@@ -14,8 +14,11 @@ export const authSlice = createSlice({
     showProductSellingPortal: (state) => {
       state.showAuthenticationPage = true;
     },
+    logout: (state) => {
+      state.isAuthenticated = false;
+    },
   },
 });
 
-export const { authenticate } = authSlice.actions;
+export const { authenticate, logout } = authSlice.actions;
 export default authSlice.reducer;

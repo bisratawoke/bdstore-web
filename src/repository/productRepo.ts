@@ -3,13 +3,15 @@ import localStorage from "../database/localStorage";
 import { IProduct } from "../domain/models";
 import type ProductGatewayType from "../network/product.gateway";
 import ProductGateway from "../network/product.gateway";
-
+import UserRepo from "./userRepo";
 export default class productRepo {
   private database: localStorageType;
   private productGateway: ProductGatewayType;
+  private userRepo: UserRepo;
   constructor() {
     this.database = new localStorage();
     this.productGateway = new ProductGateway();
+    this.userRepo = new UserRepo();
   }
 
   public async getProductsFromDb(filters?: any): Promise<IProduct[]> {
@@ -45,10 +47,24 @@ export default class productRepo {
     }
   }
 
+  public async getProduct(id: string) {
+    try {
+      const result = await this.productGateway.getProduct(id);
+      return result;
+    } catch (error) {
+      throw error;
+    }
+  }
   public async createProduct(productInfo: any) {
     try {
-      const result = await this.productGateway.createProduct(productInfo);
-      return result;
+      const token = this.userRepo.getToken();
+      if (token) {
+        const result = await this.productGateway.createProduct(
+          productInfo,
+          token
+        );
+        return result;
+      }
     } catch (error) {
       throw error;
     }

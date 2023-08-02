@@ -30,13 +30,20 @@ export default function index({
         onChange={(e) => {
           setProductTypeFormControl(e.target.value);
         }}
-        defaultValue={productTypeFormControl}
+        value={productTypeFormControl}
       >
         {categories != null ? (
           <>
-            {categories.map((categorie: ICategorie) => (
-              <option value={`${categorie.title}`}>{categorie.title}</option>
-            ))}
+            {categories.map((categorie: ICategorie, indx: number) => {
+              if (indx == 0) {
+                setProductTypeFormControl(categorie.title);
+              }
+              return (
+                <option value={`${categorie.title}`} selected>
+                  {categorie.title}
+                </option>
+              );
+            })}
           </>
         ) : (
           <></>

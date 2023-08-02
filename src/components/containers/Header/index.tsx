@@ -17,9 +17,6 @@ export default function index() {
   const localStorage = new LocalStorage();
   const filters = useSelector((state: any) => state.filter);
   const dispatch = useDispatch();
-  // const showModal = useCallback(async () => {
-  //   setShowFilterModal(true);
-  // }, []);
 
   const hideModal = () => {
     setShowFilterModal(false);
@@ -58,14 +55,6 @@ export default function index() {
               </div>
               <span className="text-xl text-rose-500 font-bold flex-1 font-sans"></span>
             </div>
-            {/* <Search
-              showModal={showModal}
-              region={filters.current.location}
-              productType={filters.current.category}
-              minPrice={filters.current.min_price}
-              maxPrice={filters.current.max_price}
-              removeFilter={removeFilter}
-            /> */}
             <Search
               showModal={() => navigate("/filter")}
               region={filters.current.location}

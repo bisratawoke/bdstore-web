@@ -3,14 +3,19 @@ import { message } from "antd";
 import { useState } from "react";
 import UserRepo from "../../../repository/userRepo";
 import Logo from "../../presentation/Logo";
+import { useSearchParams } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { authenticate } from "../Auth/authSlice";
 export default function index() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [messageApi, messageContext] = message.useMessage();
   const messageKey = "key";
   const [emailFormControl, setEmailFormControl] = useState<string>("");
   const [passwordFormControl, setPasswordFormControl] = useState<string>("");
   const userRepo = new UserRepo();
-
+  const [params] = useSearchParams();
+  console.log(params);
   const handleSubmit = async (e: React.FormEvent) => {
     try {
       e.preventDefault();
@@ -31,9 +36,13 @@ export default function index() {
         key: messageKey,
         type: "success",
         content: "Welcome back !",
+        duration: 3000,
       });
+      setTimeout(() => {
+        dispatch(authenticate());
+        navigate(`${params.get("redirect_uri")} `);
+      }, 2000);
     } catch (error) {
-      console.log(error);
       messageApi.open({
         key: messageKey,
         type: "error",
@@ -60,7 +69,7 @@ export default function index() {
               New to Store?{" "}
               <span
                 className="text-green-600 hover:cursor-pointer hover:text-green-500"
-                onClick={() => navigate("/register")}
+                onClick={() => navigate("/register?redirect_uri=/login")}
               >
                 Create an account
               </span>

@@ -7,6 +7,8 @@ import ProductFilterRoute from "../components/containers/ProductFilterRoute";
 import LocationFilterRoute from "../components/containers/LocationFilterRoute";
 import FilterRoute from "../components/containers/FilterRoute";
 import PriceFilterRoute from "../components/containers/PriceFilterRoute";
+import ProductDescription from "../components/containers/ProductDescription";
+
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -23,6 +25,10 @@ export const router = createBrowserRouter([
   {
     path: "/register",
     element: <Register />,
+  },
+  {
+    path: "/product/:id",
+    element: <ProductDescription />,
   },
   {
     path: "/filter",

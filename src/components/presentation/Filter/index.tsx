@@ -12,13 +12,13 @@ export default function index({
 }) {
   return (
     <div
-      className={`border-r-2 border-gray-300 p-2 px-4 text-${text_size} flex flex-cols`}
+      className={`border-r-2 border-gray-300 p-2 px-4 text-${text_size} flex flex-cols items-center`}
     >
       <div
-        className={`${
+        className={` flex flex-cols items-center px-2 gap-2 bg-gray-300 shadow-lg ${
           name.includes("Anywhere") || name.includes("Everything")
-            ? ""
-            : "border-2 border-gray-200 rounded-xl flex flex-cols "
+            ? "bg-white shadow-none"
+            : "border-2 border-gray-200 rounded-xl flex flex-cols"
         } `}
       >
         <span
@@ -34,7 +34,7 @@ export default function index({
           <></>
         ) : (
           <CiCircleRemove
-            className="hover:cursor-pointer text-black"
+            className="hover:cursor-pointer text-black "
             onClick={() => removeFilter(filterType)}
           />
         )}

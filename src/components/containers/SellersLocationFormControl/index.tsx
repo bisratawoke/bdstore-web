@@ -27,13 +27,17 @@ export default function index({
           className="border-2 border-gray-300 rounded-xl p-2"
           placeholder="select region"
           onChange={(e) => setRegionNameFormControl(e.target.value)}
-          defaultValue={regionNameFormControl}
+          // defaultValue={regionNameFormControl}
+          value={regionNameFormControl}
         >
           {regions != null ? (
             <>
-              {regions.map((region: Region) => (
-                <option value={region.name}>{region.name}</option>
-              ))}
+              {regions.map((region: Region, indx) => {
+                if (indx == 0) {
+                  setRegionNameFormControl(region.name);
+                }
+                return <option value={region.name}>{region.name}</option>;
+              })}
             </>
           ) : (
             <></>

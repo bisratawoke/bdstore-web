@@ -5,10 +5,21 @@ import ProductRepo from "../../../repository/productRepo";
 import { IProduct } from "../../../domain/models";
 import Product from "../../presentation/Product";
 import logo from "../../../assets/logo.png";
+import { Spin } from "antd";
+import { LoadingOutlined } from "@ant-design/icons";
+// import { useNavigate } from "react-router-dom";
 export default function index() {
   const productRepo: productRepo = new ProductRepo();
-  const [products, setProducts] = useState<Array<IProduct>>();
+  const [products, setProducts] = useState<Array<IProduct> | null>(null);
   const filters = useSelector((state: any) => state.filter);
+  // const navigate = useNavigate();
+  // const productClickHandler = (id: string) => {
+  //   try {
+  //     navigate(id);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
   useEffect(() => {
     productRepo
       .getProducts(filters.current)
@@ -27,6 +38,17 @@ export default function index() {
           <img src={logo} />
           <span>Not items found</span>
         </div>
+      ) : (
+        <></>
+      )}
+      {products == null ? (
+        <>
+          <div className="h-screen w-screen flex items-center  py-20 flex-col ">
+            <Spin
+              indicator={<LoadingOutlined style={{ fontSize: 24 }} spin />}
+            />
+          </div>
+        </>
       ) : (
         <></>
       )}

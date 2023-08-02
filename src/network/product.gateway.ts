@@ -4,6 +4,16 @@ import Config from "../config/config";
 export default class ProductGateway {
   constructor() {}
 
+  public async getProduct(id: string) {
+    try {
+      const response = await axios.get(
+        `${Config.getBaseUrl()}/api/v1/item-description/${id}`
+      );
+      return response.data;
+    } catch (error) {
+      throw error;
+    }
+  }
   public async getProducts(filters: any): Promise<IProduct[]> {
     try {
       const response = await axios.get(
@@ -20,10 +30,6 @@ export default class ProductGateway {
 
   public async getNumberOfProductsThatMatch(filters: any): Promise<number> {
     try {
-      console.log(
-        "=============== in getNumberOfProductsThatMatchGateway =========="
-      );
-      console.log(filters);
       const response = await axios.get(
         `${Config.getBaseUrl()}/api/v1/item/match/${filters.location}/${
           filters.category
@@ -31,13 +37,13 @@ export default class ProductGateway {
       );
       return response.data;
     } catch (error: any) {
-      console.log(error);
       throw new Error(error);
     }
   }
 
   public async createProduct(
-    productInfo: Omit<IProduct, "id" | "picture_url">
+    productInfo: Omit<IProduct, "id" | "picture_url">,
+    token: string
   ) {
     try {
       const result = await axios.post(
@@ -46,9 +52,7 @@ export default class ProductGateway {
         {
           headers: {
             "Content-Type": "multipart/form-data",
-            Authorization:
-              "Bearer " +
-              "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImJpc3JhdEBnbWFpbC5jb20iLCJpZCI6IjRjNjI3MGZlLWIzN2MtNGQwYS1hOTg2LTI1OWRmZTMxZjYwYSIsImlhdCI6MTY4OTQyMTMyMX0.4gmPd1Ig5Fie8IjgSFi3kkLCvbfYv6vYA2sDNn2YZio",
+            Authorization: "Bearer " + token,
           },
         }
       );

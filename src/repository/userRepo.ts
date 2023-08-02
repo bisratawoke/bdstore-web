@@ -37,6 +37,12 @@ export default class UserRepo {
     }
   }
 
+  getToken() {
+    try {
+      return this.localStorage.getUserToken();
+    } catch (error) {}
+  }
+
   async login(payload: authPayload) {
     try {
       const response = await this.userGateway.authenticateUser(payload);

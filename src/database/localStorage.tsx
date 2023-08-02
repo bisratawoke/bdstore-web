@@ -7,16 +7,12 @@ import { BiBook, BiNetworkChart } from "react-icons/bi";
 import { MdOutlineFastfood } from "react-icons/md";
 import { TbShoe } from "react-icons/tb";
 import { RiEyeCloseLine } from "react-icons/ri";
-import { MdOutlineWbSunny } from "react-icons/md";
+// import { MdOutlineWbSunny } from "react-icons/md";
 import { GiJewelCrown } from "react-icons/gi";
 export default class localStorage {
   private categories = [
     {
-      title: "New",
-      icon: <MdOutlineWbSunny className="text-2xl text-gray-600" />,
-    },
-    {
-      title: "Tech",
+      title: "Technology",
       icon: <HiOutlineComputerDesktop className="text-2xl text-gray-600" />,
     },
     {
@@ -299,6 +295,14 @@ export default class localStorage {
       } else return null;
     } catch (error) {
       throw error;
+    }
+  }
+
+  public deleteToken() {
+    try {
+      window.localStorage.removeItem("token");
+    } catch (error) {
+      console.log(error);
     }
   }
 }

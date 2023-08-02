@@ -23,7 +23,7 @@ export default function index() {
 
   return (
     <>
-      <div className="flex gap-10 lg:col-start-1 lg:col-end-13 lg:grid lg:grid-cols-12  scrollbar-hide overflow-x-scroll p-6  bg-white border-b-2 border-gray-100 ">
+      <div className="flex gap-10 lg:col-start-1 lg:col-end-13 lg:grid lg:grid-cols-12  scrollbar-hide overflow-x-scroll p-2  bg-white border-b-2 border-gray-100 ">
         {categories?.map((categorie: ICategorie) => {
           const props = {
             ...categorie,

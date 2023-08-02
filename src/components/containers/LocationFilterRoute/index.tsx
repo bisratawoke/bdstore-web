@@ -3,11 +3,13 @@ import { Region } from "../../../domain/models";
 import RegionPresentor from "../../presentation/Region";
 import LocationRepo from "../../../repository/locationRepo";
 import { useNavigate } from "react-router-dom";
+import { LoadingOutlined } from "@ant-design/icons";
+import { Spin } from "antd";
 import { IoArrowBackCircleOutline } from "react-icons/io5";
 export default function index({}: {}) {
   const locationRepo = new LocationRepo();
   const navigate = useNavigate();
-  const [regions, setRegions] = useState<any>();
+  const [regions, setRegions] = useState<any>(null);
   const storeChosenFilterValue = (value: string) => {
     localStorage.setItem("location", value);
     navigate("product");
@@ -39,16 +41,19 @@ export default function index({}: {}) {
           className="rounded-xl p-4 border-2 border-gray-300"
           onChange={onSearchInputChanged}
         />
-
-        <div className="grid grid-cols-2 gap-10 scrollbar-hide overflow-x-scroll">
-          {regions?.map((region: Region) => (
-            <RegionPresentor
-              key={region.name}
-              region={region}
-              storeChosenFilterValue={storeChosenFilterValue}
-            />
-          ))}
-        </div>
+        {regions == null ? (
+          <Spin indicator={<LoadingOutlined style={{ fontSize: 24 }} spin />} />
+        ) : (
+          <div className="grid grid-cols-2 gap-10 scrollbar-hide overflow-x-scroll">
+            {regions?.map((region: Region) => (
+              <RegionPresentor
+                key={region.name}
+                region={region}
+                storeChosenFilterValue={storeChosenFilterValue}
+              />
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );

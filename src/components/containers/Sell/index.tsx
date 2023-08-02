@@ -34,31 +34,31 @@ export default function index() {
         content: "Creating post...",
       });
 
-      setTimeout(async () => {
-        const formData = new FormData();
-        formData.append("status", "active");
-        formData.append("region", regionNameFormControl);
-        formData.append("location", cityNameFormControl);
-        formData.append("description", itemDescriptionFormControl);
-        formData.append("price", priceFormControl);
-        formData.append("catalog_type", productTypeFormControl);
-        formData.append("picture", productImageFormControl[0]);
+      const formData = new FormData();
+      formData.append("status", "active");
+      formData.append("region", regionNameFormControl);
+      formData.append("location", cityNameFormControl);
+      formData.append("description", itemDescriptionFormControl);
+      formData.append("price", priceFormControl);
+      formData.append("catalog_type", productTypeFormControl);
+      formData.append("picture", productImageFormControl[0]);
 
-        const response = await productRepo.createProduct(formData);
-        console.log(response);
-        messageApi.open({
-          type: "success",
-          key: messageKey,
-          content: "Successfully created post",
-        });
-      }, 2000);
+      const response = await productRepo.createProduct(formData);
+      console.log(response);
+      messageApi.open({
+        type: "success",
+        key: messageKey,
+        content: "Successfully created post",
+        duration: 3000,
+      });
+      setTimeout(() => navigate("/"), 2000);
     } catch (error) {
       console.log(error);
     }
   }
 
   useEffect(() => {
-    userRepo.isAuthenticated() ? null : navigate("/login");
+    userRepo.isAuthenticated() ? null : navigate("/login?redirect_uri=/sell");
   }, []);
   return (
     <div className="grid grid-cols-1 p-1 lg:grid-cols-12 gap-1  bg-white">

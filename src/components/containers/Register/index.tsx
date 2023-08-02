@@ -3,15 +3,18 @@ import { useNavigate } from "react-router-dom";
 import { message } from "antd";
 import { useState } from "react";
 import UserRepo from "../../../repository/userRepo";
+import { useSearchParams } from "react-router-dom";
 export default function index() {
   const navigate = useNavigate();
   const [messageApi, messageContext] = message.useMessage();
   const messageKey = "key";
   const [emailFormControl, setEmailFormControl] = useState<string>("");
+  const [phoneNumberFormControl, setPhoneNumberFormControl] =
+    useState<string>("");
   const [passwordFormControl, setPasswordFormControl] = useState<string>("");
   const [firstNameFormControl, setFirstNameFormControl] = useState<string>("");
   const [lastNameFormControl, setLastNameFormControl] = useState<string>("");
-
+  const [params] = useSearchParams();
   const userRepo = new UserRepo();
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -27,13 +30,18 @@ export default function index() {
         password: passwordFormControl,
         first_name: firstNameFormControl,
         last_name: lastNameFormControl,
+        phone_number: phoneNumberFormControl,
       };
       await userRepo.register(user);
       messageApi.open({
         type: "success",
         content: "Account successfully created...",
+        duration: 2000,
         key: messageKey,
       });
+      setTimeout(() => {
+        navigate(`${params.get("redirect_url")}`);
+      }, 2000);
     } catch (error: any) {
       console.log(error);
       messageApi.open({
@@ -92,6 +100,15 @@ export default function index() {
               className="border-2 border-gray-300 rounded-lg py-2"
               value={emailFormControl}
               onChange={(e) => setEmailFormControl(e.target.value)}
+              required
+            />
+            <input
+              type="text"
+              placeholder="Phone Number"
+              className="border-2 border-gray-300 rounded-lg py-2"
+              value={phoneNumberFormControl}
+              onChange={(e) => setPhoneNumberFormControl(e.target.value)}
+              required
             />
             <input
               type="text"
@@ -99,6 +116,7 @@ export default function index() {
               className="border-2 border-gray-300 rounded-lg py-2"
               value={passwordFormControl}
               onChange={(e) => setPasswordFormControl(e.target.value)}
+              required
             />
           </div>
           <input
