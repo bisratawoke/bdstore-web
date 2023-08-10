@@ -11,11 +11,11 @@ export default function index() {
   const dispatch = useDispatch();
   const [messageApi, messageContext] = message.useMessage();
   const messageKey = "key";
-  const [emailFormControl, setEmailFormControl] = useState<string>("");
+  const [userNameFormControl, setUserNameFormControl] = useState<string>("");
   const [passwordFormControl, setPasswordFormControl] = useState<string>("");
   const userRepo = new UserRepo();
   const [params] = useSearchParams();
-  console.log(params);
+
   const handleSubmit = async (e: React.FormEvent) => {
     try {
       e.preventDefault();
@@ -27,7 +27,7 @@ export default function index() {
       });
 
       const user = {
-        email: emailFormControl,
+        username: userNameFormControl,
         password: passwordFormControl,
       };
       await userRepo.login(user);
@@ -80,8 +80,8 @@ export default function index() {
               type="text"
               placeholder="Email"
               className="border-2 border-gray-300 rounded-lg py-2"
-              value={emailFormControl}
-              onChange={(e) => setEmailFormControl(e.target.value)}
+              value={userNameFormControl}
+              onChange={(e) => setUserNameFormControl(e.target.value)}
             />
             <input
               type="text"

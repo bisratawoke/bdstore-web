@@ -43,7 +43,7 @@ export default class UserRepo {
     } catch (error) {}
   }
 
-  async login(payload: authPayload) {
+  async login(payload: { username: string; password: string }) {
     try {
       const response = await this.userGateway.authenticateUser(payload);
       this.localStorage.storeItem("token", response.token);

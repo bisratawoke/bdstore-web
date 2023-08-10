@@ -8,7 +8,10 @@ interface authPayload {
 }
 export default class UserGateway {
   constructor() {}
-  public async authenticateUser(payload: authPayload) {
+  public async authenticateUser(payload: {
+    username: string;
+    password: string;
+  }) {
     try {
       const result = await axios.post(
         `${Config.getBaseUrl()}/api/v1/user/login`,

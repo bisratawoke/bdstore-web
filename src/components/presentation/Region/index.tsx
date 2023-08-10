@@ -13,7 +13,7 @@ export default function index({
       onClick={() => storeChosenFilterValue(region.name)}
     >
       <img
-        src={`${region.picture_url}`}
+        src={`data:image/png;base64, ${region.picture_url}`}
         className="flex-shrink-0 object-contain h-32 flex-basis-32"
       />
       <span className="text-gray-500">{region.name}</span>

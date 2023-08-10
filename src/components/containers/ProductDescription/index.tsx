@@ -2,13 +2,11 @@ import { useEffect, useState } from "react";
 import { IProduct } from "../../../domain/models";
 import { useParams } from "react-router-dom";
 import ProductRepo from "../../../repository/productRepo";
-import Config from "../../../config/config";
 import { IoArrowBackCircleOutline } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
 import { Spin } from "antd";
 import { LoadingOutlined } from "@ant-design/icons";
 import { BiPhoneCall } from "react-icons/bi";
-import { AiOutlineMail } from "react-icons/ai";
 import { TbReportMoney } from "react-icons/tb";
 type ProductWithUserInfo = {
   owner: { email: string; phone_number: string };
@@ -44,7 +42,11 @@ export default function index() {
         <div>
           <div className="h-['375px'] w-['250px']">
             <img
-              src={`${Config.getBaseUrl()}/${productInfo?.picture_url}`}
+              src={`${
+                productInfo.picture_url == null
+                  ? `data:image/png;base64, ${productInfo.picture}`
+                  : productInfo.picture_url
+              }`}
               className="h-full w-full"
               alt=""
             />
@@ -59,13 +61,13 @@ export default function index() {
                     {productInfo.owner.phone_number}
                   </span>
                 </div>
-
+                {/* 
                 <div className="flex gap-2 items-center">
                   <AiOutlineMail />
                   <span className="text-black text-lg">
                     {productInfo.owner.email}
                   </span>
-                </div>
+                </div> */}
               </div>
             </div>
             <div className="flex flex-col gap-1">
@@ -80,6 +82,11 @@ export default function index() {
               <span className="text-black font-bold">Description</span>
 
               <span className="text-black">{productInfo.description}</span>
+            </div>
+            <div className="flex flex-col gap-1">
+              <span className="text-black font-bold">Location</span>
+
+              <span className="text-black">{productInfo.region_name}</span>
             </div>
           </div>
         </div>

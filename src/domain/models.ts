@@ -12,6 +12,7 @@ export interface IProduct {
   status: string;
   picture_url: string;
   region_name: string;
+  picture: string;
 }
 
 export interface Region {

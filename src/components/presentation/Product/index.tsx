@@ -1,5 +1,4 @@
 import { IProduct } from "../../../domain/models";
-import Config from "../../../config/config";
 import { useNavigate } from "react-router-dom";
 export default function index(props: IProduct) {
   const navigate = useNavigate();
@@ -16,7 +15,11 @@ export default function index(props: IProduct) {
       onClick={() => productClickHandler(props.id)}
     >
       <img
-        src={`${Config.getBaseUrl()}/${props.picture_url}`}
+        src={`${
+          props.picture_url == null
+            ? `data:image/png;base64, ${props.picture}`
+            : props.picture_url
+        }`}
         className="object-cover w-full h-full lg:w-[323px] lg:h-[307px] rounded-lg"
       />
       <div className="flex flex-col gap-2">

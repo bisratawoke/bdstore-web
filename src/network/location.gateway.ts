@@ -7,7 +7,7 @@ export default class locationGateway {
     try {
       const response = await axios.get(`${Config.getBaseUrl()}/api/v1/region`);
       const result = await response.data.map((region: Region) => ({
-        picture_url: `${Config.getBaseUrl()}/${region.picture_url}`,
+        picture_url: `${region.picture_url}`,
         name: region.name,
       }));
       console.log(result);

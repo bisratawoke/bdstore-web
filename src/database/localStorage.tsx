@@ -206,9 +206,9 @@ export default class localStorage {
 
   private async filterProductsByProductType(
     productName: string
-  ): Promise<IProduct[]> {
+  ): Promise<any[]> {
     if (productName && productName.length > 0 && productName !== "Everything") {
-      let products = this.products.filter((product: IProduct) =>
+      let products = this.products.filter((product: any) =>
         product.catalog_type.toLowerCase().startsWith(productName.toLowerCase())
       );
       return products;
