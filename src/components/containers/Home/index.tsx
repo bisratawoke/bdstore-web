@@ -20,7 +20,7 @@ function Home() {
           <Filters />
         </div>
         <Products />
-        <div className="sticky bottom-0 lg:hidden">
+        <div className="fixed bottom-0 flex w-full justify-center lg:hidden">
           <BottomNav />
         </div>
       </div>

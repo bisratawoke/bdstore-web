@@ -69,7 +69,7 @@ export default function index() {
           <Logo />
         </div>
         <span className="text-3xl font-bold text-black ">
-          Sell product in Kian
+          Sell product on Kian
         </span>
         <SelectProductTypeFormControl
           productTypeFormControl={productTypeFormControl}

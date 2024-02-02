@@ -11,7 +11,7 @@ export const filterSlice = createSlice({
     },
   },
   reducers: {
-    setCurrentLocationFilter: (state, action) => {
+    setCurrentLocationFilter: (state: any, action: any) => {
       return {
         ...state,
         current: { ...state.current, location: action.payload },

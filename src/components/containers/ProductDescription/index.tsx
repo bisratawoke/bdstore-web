@@ -30,8 +30,8 @@ export default function index() {
   }, []);
 
   return (
-    <div className="grid grid-cols-1">
-      <div className="p-5 bg-white flex flex-cols items-center gap-2">
+    <div className="grid grid-cols-1 lg:grid-cols-12 bg-gray-100">
+      <div className="p-5  flex flex-cols items-center gap-2 lg:col-start-1 lg:col-end-10">
         <IoArrowBackCircleOutline
           className="text-3xl text-gray-500"
           onClick={() => navigate("/")}
@@ -39,15 +39,15 @@ export default function index() {
         <span className="text-gray-600">Home</span>
       </div>
       {productInfo != null ? (
-        <div>
-          <div className="h-['375px'] w-['250px']">
+        <div className="lg:col-start-4 lg:col-end-10 bg-white rounded-md">
+          <div className="h-['375px'] w-['250px'] lg:p-5">
             <img
               src={`${
                 productInfo.picture_url == null
                   ? `data:image/png;base64, ${productInfo.picture}`
                   : productInfo.picture_url
               }`}
-              className="h-full w-full"
+              className="h-full w-full rounded-md"
               alt=""
             />
           </div>

@@ -43,11 +43,11 @@ export default function index() {
         navigate(`${params.get("redirect_url")}`);
       }, 2000);
     } catch (error: any) {
-      console.log(error);
       messageApi.open({
         type: "error",
-        content: error.message,
+        content: `error.message`,
         key: messageKey,
+        duration: 3,
       });
     }
   };
@@ -83,6 +83,7 @@ export default function index() {
               placeholder="First name"
               className="border-2 border-gray-300 rounded-lg py-2"
               value={firstNameFormControl}
+              required
               onChange={(e) => setFirstNameFormControl(e.target.value)}
             />
             <input
@@ -90,12 +91,13 @@ export default function index() {
               placeholder="Last name"
               className="border-2 border-gray-300 rounded-lg py-2"
               value={lastNameFormControl}
+              required
               onChange={(e) => setLastNameFormControl(e.target.value)}
             />
           </div>
           <div className="grid grid-cols-1 gap-4">
             <input
-              type="text"
+              type="email"
               placeholder="Email"
               className="border-2 border-gray-300 rounded-lg py-2"
               value={emailFormControl}
@@ -111,7 +113,7 @@ export default function index() {
               required
             />
             <input
-              type="text"
+              type="password"
               placeholder="Password"
               className="border-2 border-gray-300 rounded-lg py-2"
               value={passwordFormControl}

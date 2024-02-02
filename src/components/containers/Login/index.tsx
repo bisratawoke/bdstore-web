@@ -78,7 +78,7 @@ export default function index() {
           <div className="grid grid-cols-1 gap-4">
             <input
               type="text"
-              placeholder="Email"
+              placeholder="Email or Phone number"
               className="border-2 border-gray-300 rounded-lg py-2"
               value={userNameFormControl}
               onChange={(e) => setUserNameFormControl(e.target.value)}

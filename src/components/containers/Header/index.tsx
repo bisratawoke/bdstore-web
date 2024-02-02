@@ -34,7 +34,8 @@ export default function index() {
 
   const removeFilter = (filter: string) => {
     if (filter == "location") {
-      dispatch(setCurrentLocationFilter("Anywhere"));
+      let fil: any = "Anywhere";
+      dispatch(setCurrentLocationFilter(fil));
     } else {
       dispatch(setCurrentProductCategory("Everything"));
     }

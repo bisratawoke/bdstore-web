@@ -24,19 +24,19 @@ export default function index() {
       });
   }, [filters.current]);
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-4 ">
+    <div className="grid grid-cols-1 lg:grid-cols-3 ">
       {products == null ? (
-        <>
-          <div className="h-screen w-screen flex items-center  overscroll-none py-20 flex-col ">
+        <div className="lg:col-start-3 lg:col-end-10">
+          <div className="h-[screen] w-[screen]  flex items-center  overscroll-none py-20 flex-col">
             <Spin
               indicator={<LoadingOutlined style={{ fontSize: 24 }} spin />}
             />
           </div>
-        </>
+        </div>
       ) : (
         <>
           {products && products?.length < 1 ? (
-            <div className="h-screen w-screen  overscroll-none  flex items-center  flex-col ">
+            <div className="h-[screen] w-[screen]  lg:col-start-3 lg:col-end-10 overscroll-none  flex items-center  flex-col ">
               <img src={logo} />
               <span>Not items found</span>
             </div>
